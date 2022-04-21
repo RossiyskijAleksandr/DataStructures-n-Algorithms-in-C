@@ -13,9 +13,9 @@ typedef struct {
     void** data;
 }* List;
 
-List listInit(size_t, size_t);
-void listFree(List);
-bool listResize(List);
-bool listAppend(List, void*);
+extern List listInit(size_t, size_t);
+extern void listFree(List);
+extern bool listResize(List);
+extern bool listAppend(List, void*);
 
 #endif /* LIST_HEADER */

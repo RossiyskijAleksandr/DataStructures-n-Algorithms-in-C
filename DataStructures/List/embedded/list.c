@@ -4,21 +4,20 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-typedef struct {
-    size_t len;
-    size_t cap;
-    void** data;
-}* List;
+#include "list.h"
 
 List listInit(size_t len, size_t cap) {
     assert(len < cap);
     List self = malloc(sizeof(*self));
+    if(!self)
+        return NULL;
     self->data = malloc(sizeof(*self->data) * cap);
-    if(!self->data)
+    if(!self->data) {
         free(self);
+        return NULL;
+    }
     self->len = len;
     self->cap = cap;
-
     return self;
 }
 
